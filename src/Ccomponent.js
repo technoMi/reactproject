@@ -1,8 +1,10 @@
 import React, { Component } from "react";
+import FComponent from "./FComponent.js";
 
 export default class Ccomponent extends Component {
 	
 	constructor(props){
+
 		super(props)
 
 		this.state = {
@@ -28,11 +30,17 @@ export default class Ccomponent extends Component {
 		})
 	}
 
+	renderList() {
+      return this.state.array.map((item) => {
+         return <FComponent elem={item}/>
+      })
+   }
+
 	render() {
 		return (
 			<div>
 				<h3>Array length: {this.state.array.length}</h3>
-				<h1>{this.state.array.join(', ')}</h1>
+				<div className="output-box"> { this.renderList() } </div>
 				<button onClick={this.addElement}>Add element</button>
 				<button onClick={this.deleteElement}>Delete element</button>
 				<h3>Total clicks: {this.state.count}</h3>
