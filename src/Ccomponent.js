@@ -6,26 +6,36 @@ export default class Ccomponent extends Component {
 		super(props)
 
 		this.state = {
-			string: "Hello, world!",
-			count: 0
+			count: 0,
+			array: []
 		}
 
-		this.handleClick = this.handleClick.bind(this);
+		this.addElement = this.addElement.bind(this);
+		this.deleteElement = this.deleteElement.bind(this);
 	}
 
-	handleClick(){
+	addElement(){
 		this.setState({
-			string: this.state.string + " Click!",
-			count: this.state.count + 1
+			count: this.state.count + 1,
+			array: this.state.array.concat(["1"])
+		})
+	}
+
+	deleteElement(){
+		this.setState({
+			count: this.state.count + 1,
+			array: this.state.array.filter((element, index) => index < this.state.array.length - 1)
 		})
 	}
 
 	render() {
 		return (
 			<div>
-				<h1>{this.state.string}</h1>
-				<button onClick={this.handleClick}>Click</button>
-				<h3>Counter: {this.state.count}</h3>
+				<h3>Array length: {this.state.array.length}</h3>
+				<h1>{this.state.array.join(', ')}</h1>
+				<button onClick={this.addElement}>Add element</button>
+				<button onClick={this.deleteElement}>Delete element</button>
+				<h3>Total clicks: {this.state.count}</h3>
 			</div>
 		);
 	}
