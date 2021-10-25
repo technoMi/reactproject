@@ -31,9 +31,13 @@ export default class Ccomponent extends Component {
 	}
 
 	renderList() {
-		if (this.state.array.length != 0 ) {
-	      return this.state.array.map((item) => {
-	         return <FComponent elem={item}/>
+		if (this.state.array.length !== 0 ) {
+	      return this.state.array.map((item, index) => {
+	         	return (
+	         		<span key={`${item}${index}`}>
+	         			<FComponent elem={item} idx={index}/>
+	         		</span>	
+	         	)        
 	      })
    	} else {
    		return <span>List is empty</span>
