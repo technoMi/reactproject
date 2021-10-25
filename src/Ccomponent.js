@@ -31,18 +31,27 @@ export default class Ccomponent extends Component {
 	}
 
 	renderList() {
-      return this.state.array.map((item) => {
-         return <FComponent elem={item}/>
-      })
+		if (this.state.array.length != 0 ) {
+	      return this.state.array.map((item) => {
+	         return <FComponent elem={item}/>
+	      })
+   	} else {
+   		return <span>List is empty</span>
+   	}
    }
 
 	render() {
 		return (
 			<div>
 				<h3>Array length: {this.state.array.length}</h3>
-				<div className="output-box"> { this.renderList() } </div>
+
+				<div className="output-box">
+					<span>[</span>{ this.renderList() }<span>]</span>
+				</div>
+
 				<button onClick={this.addElement}>Add element</button>
 				<button onClick={this.deleteElement}>Delete element</button>
+
 				<h3>Total clicks: {this.state.count}</h3>
 			</div>
 		);

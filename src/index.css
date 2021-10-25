@@ -13,7 +13,7 @@ code {
 }
 
 span {
-	font-size: 24px;
+	font-size: 32px;
 }
 
 .output-box {
@@ -36,3 +36,8 @@ button {
 }
 
 button:hover {opacity: 1}
+
+button:active {
+	background-color: #FF0000;
+	transition: 0.1s;
+}
