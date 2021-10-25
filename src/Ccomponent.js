@@ -3,7 +3,7 @@ import FComponent from "./FComponent.js";
 
 export default class Ccomponent extends Component {
 	
-	constructor(props){
+	constructor(props) {
 
 		super(props)
 
@@ -16,14 +16,14 @@ export default class Ccomponent extends Component {
 		this.deleteElement = this.deleteElement.bind(this);
 	}
 
-	addElement(){
+	addElement() {
 		this.setState({
 			count: this.state.count + 1,
-			array: this.state.array.concat(["1"])
+			array: [...this.state.array, "1"]
 		})
 	}
 
-	deleteElement(){
+	deleteElement() {
 		this.setState({
 			count: this.state.count + 1,
 			array: this.state.array.filter((element, index) => index < this.state.array.length - 1)
@@ -31,17 +31,15 @@ export default class Ccomponent extends Component {
 	}
 
 	renderList() {
-		if (this.state.array.length !== 0 ) {
-	      return this.state.array.map((item, index) => {
-	         	return (
-	         		<span key={`${item}${index}`}>
-	         			<FComponent elem={item} idx={index}/>
-	         		</span>	
-	         	)        
-	      })
-   	} else {
-   		return <span>List is empty</span>
-   	}
+		return this.state.array.map((item, index) => {
+	   	return (this.state.array.length !== 0 ) ? (
+	      	<span key={`${item}${index}`}>
+	        		<FComponent elem={item} idx={index}/>
+	         </span>	
+	       ) : (
+	         <span>List is empty</span>
+	       )
+	   })
    }
 
 	render() {
